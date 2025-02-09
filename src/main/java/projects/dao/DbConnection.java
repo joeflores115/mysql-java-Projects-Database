@@ -15,11 +15,13 @@ public class DbConnection {
 
 	public static java.sql.Connection getConnection()
 	{
-		String uri=String.format("jdbc:mysql://root:TopoBall1!@localhost:3306", HOST,PORT,SCHEMA,USER,PASSWORD);
+		String uri=String.format("jdbc:mysql://%s:%d/%s?user=%s&password=%s&useSSL=false", HOST,PORT,SCHEMA,USER,PASSWORD);
 		
 		try {
 			Connection conn = DriverManager.getConnection(uri);
+			System.out.println("Attempting to connect to: "+ conn);
 			System.out.println("Connection to schema '"+ SCHEMA + "' is succesful.");
+			
 			return conn;
 		} catch (SQLException e) {
 			System.out.println("Unable to get connection at "+ uri);
