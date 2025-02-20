@@ -15,15 +15,15 @@ CREATE TABLE project(
 );
 CREATE TABLE material(
 	material_id INT AUTO_INCREMENT NOT NULL,
-	project_id int AUTO_INCREMENT NOT NULL,
+	project_id INT NOT NULL,
 	material_name VARCHAR(128) NOT NULL,
 	num_required INT,
 	cost DECIMAL(7,2),
-	PRIMARY KEY (material_id)
+	PRIMARY KEY (material_id),
 	FOREIGN KEY (project_id) REFERENCES project (project_id)
 );
 CREATE TABLE step(
-	step_id INT AUTO_INCREMEMENT NOT NULL,
+	step_id INT AUTO_INCREMENT NOT NULL,
 	project_id INT NOT NULL,
 	step_text TEXT NOT NULL,
 	step_order INT NOT NULL,
@@ -37,10 +37,10 @@ CREATE TABLE category(
 );
 CREATE TABLE project_category(
 	project_id INT NOT NULL,
-	category_id INT NOT NULL
+	category_id INT NOT NULL,
 	FOREIGN KEY (project_id) REFERENCES project (project_id)
 	ON DELETE CASCADE,
 	FOREIGN KEY (category_id) REFERENCES category (category_id) 
 	ON DELETE CASCADE,
-	UNIQUE (project_id), category_id)
+	UNIQUE (project_id, category_id)
 );
