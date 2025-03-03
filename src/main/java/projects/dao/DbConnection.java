@@ -19,7 +19,7 @@ public class DbConnection {
 		
 		try {
 			Connection conn = DriverManager.getConnection(uri);
-			System.out.println("Attempting to connect to: "+ conn);
+			//System.out.println("Attempting to connect to: "+ conn);
 			System.out.println("Connection to schema '"+ SCHEMA + "' is succesful.");
 			
 			return conn;
